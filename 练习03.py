@@ -36,7 +36,7 @@ def add(c_nums:list):
             current_path.append(c_nums[i])
             backtrack(i+1,current_path)
             current_path.pop()
-            #个人理解：第1次的循环的递归会将带有第一个数的子集给全部输出 而第2次循环则会将以第二个数开头的数为第一位的子集给全部输出
+            #个人理解：第1次的循环的递归会将带有第一个数的子集给全部输出 而第2次循环则会将以第二个数开头的数(但是不带第一个数)为第一位的子集给全部输出
     backtrack(0,[])
     return path
 def zhuanhuan(c_n):

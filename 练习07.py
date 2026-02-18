@@ -23,8 +23,8 @@ def decidedecide(num1,num2):
     k = 0 #用于计数循环次数
     left = 0 #sum1二分起点
     right = m #sun1二分终点
-    while True: #True将导致循环一直重复 若是输入错误将导致一直处于死循环因此需要加限定条
-        i = left + (left + right) // 2 #(left+right)//2 是每次二分时i所需前进的数
+    while left <= right: #True将导致循环一直重复 若是输入错误将导致一直处于死循环因此需要加限定条
+        i =  left + right // 2 
         j = left_total - i #因为有i+j==left_total
         if i > 0:#如果num1中右边的数小于0 则记为负无穷
             left1 = num1[i-1]
@@ -51,10 +51,8 @@ def decidedecide(num1,num2):
         elif left1 > right2:
             right = i-1
         else:
-            left = j+1
+            left = i+1
             
-        if k >20:#如果k大于20 则退出循环
-            break
         
 print(decidedecide([1, 3], [2]))  # 应输出 2.0
 print(decidedecide([1, 3, 8, 9, 15], [7, 11, 18, 19, 21, 25]))  # 应输出 11.0

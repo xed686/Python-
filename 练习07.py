@@ -20,11 +20,12 @@ def decidedecide(num1,num2):
     left_total = (n+m+1)//2 #加1是为了在总长度为奇数的时候好取整
     #left1为num1的左边每次二分最小的那个数 left2则是左边部分num2最小的数
     #right1为num2的右边每次二分最小的那个数 right2则是右边部分num2最小的数
-    i = (0 + m) // 2
-    #有i+j=left_total
-    j = left_total - i
     k = 0 #用于计数循环次数
-    while True: #True将导致循环一直重复 若是输入错误将导致一直处于死循环因此需要加限定条件
+    left = 0 #sum1二分起点
+    right = m #sun1二分终点
+    while True: #True将导致循环一直重复 若是输入错误将导致一直处于死循环因此需要加限定条
+        i = left + (left + right) // 2 #(left+right)//2 是每次二分时i所需前进的数
+        j = left_total - i #因为有i+j==left_total
         if i > 0:#如果num1中右边的数小于0 则记为负无穷
             left1 = num1[i-1]
         else:
@@ -48,11 +49,10 @@ def decidedecide(num1,num2):
             else:
                 return max(left1, left2)
         elif left1 > right2:
-            i -=1
-            j +=1
+            right = i-1
         else:
-            i +=1
-            j -=1
+            left = j+1
+            
         if k >20:#如果k大于20 则退出循环
             break
         
